@@ -101,7 +101,10 @@ export async function getCompressionMethod(): Promise<CompressionMethod> {
     const versionOutput = await getVersion("zstd");
     const version = semver.clean(versionOutput);
 
-    if (!versionOutput.toLowerCase().includes("zstd command line interface") && !versionOutput.toLowerCase().includes("Yann Collet")) {
+    if (
+        !versionOutput.toLowerCase().includes("zstd command line interface") &&
+        !versionOutput.toLowerCase().includes("Yann Collet")
+    ) {
         // zstd is not installed
         return CompressionMethod.Gzip;
     } else if (!version || semver.lt(version, "v1.3.2")) {
