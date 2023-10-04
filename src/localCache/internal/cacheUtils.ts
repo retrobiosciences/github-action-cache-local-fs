@@ -102,7 +102,7 @@ export async function getCompressionMethod(): Promise<CompressionMethod> {
     const version = semver.clean(versionOutput);
 
     if (
-        !versionOutput.toLowerCase().includes("zstd command line interface") &&
+        !versionOutput.toLowerCase().includes("zstd") &&
         !versionOutput.toLowerCase().includes("zstandard")
     ) {
         // zstd is not installed
